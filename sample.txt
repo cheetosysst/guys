@@ -1,0 +1,25 @@
+void textDraw(int xOffset, int yOffset) {
+  documentSplit = document.split(" ");
+  fill(fontColor);
+  textSize(fontSize);
+  tx = xOffset;
+  ty = yOffset;
+  for (String str : documentSplit) {
+    text(str, tx, ty);
+    if (str.length() != 0)
+      if (str.charAt(str.length()-1) == '\n') {
+        tx=0;
+        ty+=fontSize/2;
+      }
+    tx += textWidth(str)+fontSize/2;
+    println(str,tx);
+    stroke(255);
+    line (tx,0,tx,height);
+    line (0,ty,width,ty);
+  }
+  
+  
+  noFill();
+  stroke(255);
+  rect(xOffset,yOffset-fontSize,width,height);
+}
